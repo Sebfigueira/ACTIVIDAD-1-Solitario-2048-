@@ -1,0 +1,434 @@
+/* Reset y estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 10px 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #f7971e, #ffd200);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.score-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-container span:first-child {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#score {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffd700;
+}
+
+.btn {
+    background: linear-gradient(45deg, #f7971e, #ffd200);
+    border: none;
+    color: #1a1a2e;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(247, 151, 30, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Área de juego */
+.game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.columns-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    min-height: 450px;
+}
+
+.column {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.column:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.column-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 5px;
+    min-height: 350px;
+}
+
+.column-label {
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    padding: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 5px;
+}
+
+/* Cartas */
+.card {
+    width: 100%;
+    max-width: 80px;
+    aspect-ratio: 0.7;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    animation: cardAppear 0.3s ease;
+    cursor: default;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Colores de cartas según valor */
+.card-value-2 {
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    color: #333;
+}
+
+.card-value-4 {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    color: #333;
+}
+
+.card-value-8 {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    color: #fff;
+}
+
+.card-value-16 {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: #fff;
+}
+
+.card-value-32 {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #fff;
+}
+
+.card-value-64 {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    color: #333;
+}
+
+.card-value-128 {
+    background: linear-gradient(135deg, #fa709a, #fee140);
+    color: #fff;
+}
+
+.card-value-256 {
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    color: #fff;
+}
+
+.card-value-512 {
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    color: #fff;
+}
+
+.card-value-1024 {
+    background: linear-gradient(135deg, #fddb92, #d1fdff);
+    color: #333;
+}
+
+.card-value-2048 {
+    background: linear-gradient(135deg, #ffd700, #ff6b6b);
+    color: #fff;
+    animation: glowPulse 1s ease infinite;
+}
+
+/* Deck */
+.deck-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.deck-label {
+    font-size: 0.9rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.deck-card {
+    width: 80px;
+    height: 112px;
+    background: linear-gradient(145deg, #2d2d44, #1a1a2e);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.deck-card:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+/* Animaciones */
+@keyframes cardAppear {
+    from {
+        transform: scale(0.5) translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cardMerge {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 215, 0, 0.2);
+    }
+}
+
+@keyframes columnClear {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}
+
+.card-merging {
+    animation: cardMerge 0.4s ease;
+}
+
+.card-clearing {
+    animation: columnClear 0.5s ease forwards;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #1a1a2e, #2d2d44);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: cardAppear 0.5s ease;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #f7971e, #ffd200);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    opacity: 0.8;
+}
+
+.modal-content .btn {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    padding: 12px 35px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .columns-container {
+        gap: 8px;
+    }
+    
+    .column {
+        padding: 5px;
+    }
+    
+    .card {
+        max-width: 60px;
+        font-size: 1.2rem;
+    }
+    
+    .deck-card {
+        width: 60px;
+        height: 84px;
+        font-size: 1.5rem;
+    }
+    
+    .header-controls {
+        gap: 10px;
+    }
+    
+    .score-container {
+        padding: 8px 15px;
+    }
+    
+    #score {
+        font-size: 1.3rem;
+    }
+    
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        max-width: 45px;
+        font-size: 1rem;
+        border-radius: 6px;
+    }
+    
+    .deck-card {
+        width: 50px;
+        height: 70px;
+        font-size: 1.2rem;
+    }
+    
+    .modal-content {
+        padding: 25px;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+}

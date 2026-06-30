@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitario 2048</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Solitario 2048</h1>
+            <div class="header-controls">
+                <div class="score-container">
+                    <span>Puntuación</span>
+                    <span id="score">0</span>
+                </div>
+                <button id="resetBtn" class="btn">Reiniciar</button>
+            </div>
+        </header>
+
+        <div class="game-area">
+            <!-- Columnas -->
+            <div class="columns-container" id="columnsContainer">
+                <div class="column" data-column="0">
+                    <div class="column-cards" id="column0"></div>
+                    <div class="column-label">Columna 1</div>
+                </div>
+                <div class="column" data-column="1">
+                    <div class="column-cards" id="column1"></div>
+                    <div class="column-label">Columna 2</div>
+                </div>
+                <div class="column" data-column="2">
+                    <div class="column-cards" id="column2"></div>
+                    <div class="column-label">Columna 3</div>
+                </div>
+                <div class="column" data-column="3">
+                    <div class="column-cards" id="column3"></div>
+                    <div class="column-label">Columna 4</div>
+                </div>
+            </div>
+
+            <!-- Mazo -->
+            <div class="deck-container">
+                <div class="deck-label">Carta Actual</div>
+                <div class="deck-card" id="currentCard">
+                    <span id="cardValue">2</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Game Over -->
+        <div id="gameOverModal" class="modal">
+            <div class="modal-content">
+                <h2>¡Juego Terminado!</h2>
+                <p>Puntuación final: <span id="finalScore">0</span></p>
+                <button id="playAgainBtn" class="btn">Jugar de Nuevo</button>
+            </div>
+        </div>
+
+        <!-- Modal de Victoria -->
+        <div id="victoryModal" class="modal">
+            <div class="modal-content">
+                <h2>🎉 ¡Felicidades! 🎉</h2>
+                <p>Has alcanzado el 2048</p>
+                <p>Puntuación final: <span id="victoryScore">0</span></p>
+                <button id="victoryPlayAgainBtn" class="btn">Jugar de Nuevo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
